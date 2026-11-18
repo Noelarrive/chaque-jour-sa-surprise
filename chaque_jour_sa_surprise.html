@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#32111f">
+<title>Chaque jour, sa surprise — Sandra & Julien</title>
+<style>
+:root{--wine:#32111f;--wine2:#501d31;--gold:#e7c681;--cream:#fff7e9;--muted:#d8c5c1}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 50% 0%,#71374b 0%,#32111f 48%,#190d16 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#f8dfaa 1px,transparent 1px),radial-gradient(#fff 1px,transparent 1px);background-size:47px 47px,83px 83px;background-position:0 0,20px 31px}
+.wrap{width:min(960px,92vw);margin:auto;padding:30px 0 56px;position:relative}
+header{text-align:center;padding:24px 10px 18px}
+.kicker{letter-spacing:.28em;text-transform:uppercase;font:11px Arial,sans-serif;color:var(--gold)}
+h1{font-size:clamp(36px,7vw,66px);font-weight:normal;line-height:1.03;margin:14px 0 8px;color:#ffe8b4;text-shadow:0 3px 22px #d89c5740}
+.names{font:14px Arial,sans-serif;letter-spacing:.18em;color:#f4d9bd;text-transform:uppercase}
+.intro{max-width:570px;margin:18px auto 0;color:#f1dfe0;line-height:1.6;font-size:17px}
+.login,.surprise{max-width:440px;margin:28px auto;padding:26px;border:1px solid #c9a76a80;border-radius:20px;background:#fff8ed0d;box-shadow:0 18px 60px #10070b66;backdrop-filter:blur(8px);text-align:center}
+.login h2,.surprise h2{font-weight:normal;color:var(--gold);margin:0 0 10px;font-size:27px}
+input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #d9bb7b;background:#fff8ed;color:#32111f;font-size:17px;text-align:center;letter-spacing:.15em;margin:12px 0}
+button{border:0;border-radius:999px;padding:13px 23px;background:linear-gradient(135deg,#f2d99e,#c89c53);color:#32111f;font-weight:bold;font-size:15px;cursor:pointer;box-shadow:0 5px 20px #0003}
+button:focus,input:focus{outline:2px solid #fff;outline-offset:3px}
+.error{color:#ffd1d1;min-height:22px;font:13px Arial,sans-serif}
+.hidden{display:none!important}
+.progress{max-width:560px;margin:20px auto 26px;text-align:center;font:13px Arial,sans-serif;color:#f0d9d5}
+.bar{height:7px;background:#ffffff24;border-radius:20px;overflow:hidden;margin:10px 0}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#c99a51,#f7e3ae);transition:width .3s}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;max-width:760px;margin:24px auto}
+.door{min-height:126px;border:1px solid #d6b36d99;border-radius:16px;background:linear-gradient(145deg,#6a2c43,#32111f 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;transition:transform .2s,filter .2s}
+.door:not(:disabled):hover{transform:translateY(-4px);filter:brightness(1.15)}
+.door:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+.door .num{font-size:34px;color:#ffe6ad}
+.door .sub{font:10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e8cba1}
+.door.opened{background:linear-gradient(145deg,#78543a,#493020);border-color:#f4d89c}
+.note{text-align:center;color:#e9d5d2;font:12px/1.6 Arial,sans-serif;margin:22px auto;max-width:640px}
+.overlay{position:fixed;inset:0;background:#140910eF;display:flex;align-items:center;justify-content:center;padding:18px;z-index:5}
+.surprise{margin:0;width:min(500px,100%);position:relative;background:linear-gradient(160deg,#57263b,#29121d);padding:34px 28px}
+.surprise .day{font:11px Arial,sans-serif;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.surprise .emoji{font-size:48px;margin:14px 0}
+.surprise h2{font-size:30px}
+.surprise p{font-size:18px;line-height:1.65;color:#fff2e8;white-space:pre-line}
+.close{margin-top:14px}
+footer{text-align:center;margin-top:35px;color:#c7a9a9;font:11px Arial,sans-serif;letter-spacing:.08em}
+@media(max-width:560px){.grid{grid-template-columns:repeat(3,1fr);gap:9px}.door{min-height:108px}.door .num{font-size:29px}.wrap{padding-top:16px}.intro{font-size:15px}}
+@media(max-width:360px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">Édition de Noël · 2026</div>
+  <h1>Chaque jour,<br>sa surprise</h1>
+  <div class="names">Sandra <span style="color:#e7c681">♥</span> Julien</div>
+  <p class="intro">24 jours, 24 surprises, et une seule envie : te faire plaisir chaque jour un peu plus.</p>
+</header>
+
+<section id="login" class="login">
+  <h2>Un petit secret avant d'entrer…</h2>
+  <p style="color:#f0d9d5;line-height:1.5">Ce calendrier est réservé à Julien.<br>Quel est le code secret ?</p>
+  <input id="pass" type="password" placeholder="Code secret" autocomplete="off" aria-label="Code secret">
+  <button id="enter">Ouvrir mon calendrier ♥</button>
+  <div id="error" class="error"></div>
+</section>
+
+<section id="calendar" class="hidden">
+  <div class="progress">
+    <div id="progressText">0 surprise découverte sur 24</div>
+    <div class="bar"><span id="barFill"></span></div>
+    <div id="todayText"></div>
+  </div>
+  <div id="grid" class="grid"></div>
+  <p class="note">Une nouvelle porte s'ouvre chaque jour, du 1er au 24 décembre.<br>Les surprises déjà découvertes restent accessibles. Prends ton temps… ❤️</p>
+</section>
+<footer>Fait avec amour par Sandra · Un rendez-vous par jour jusqu'à Noël</footer>
+</div>
+
+<div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <article class="surprise">
+    <div class="day" id="modalDay"></div>
+    <div class="emoji" id="modalEmoji"></div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalBody"></p>
+    <button class="close" id="close">Refermer doucement ♥</button>
+  </article>
+</div>
+
+<script>
+const surprises = [
+["Le début de la magie","💌","Pendant 24 jours, j'ai décidé de te réserver un petit bout de bonheur chaque matin. Et le premier, c'est simplement de te dire que je suis heureuse de t'avoir dans ma vie. ❤️"],
+["Bon pour un petit-déjeuner","☕","Aujourd'hui, le petit-déjeuner est pour moi. Tu n'as rien à faire, juste à profiter… et peut-être à me voler un bisou entre deux bouchées."],
+["Le défi du jour","😂","Mission : me faire rire en moins de deux minutes. Si tu réussis, tu gagnes trois bisous. Si tu échoues… tu m'en dois quand même un. À toi de jouer !"],
+["Un souvenir","📸","Aujourd'hui, choisis un de nos souvenirs préférés et raconte-moi ce qui te revient en premier. Je te raconterai le mien. J'aime notre histoire, même dans ses petits détails."],
+["Pause détente","💆","Bon pour un massage relaxant de 20 minutes. Téléphone en mode silencieux, épaules relâchées et aucune obligation… sauf celle de profiter."],
+["Rendez-vous mystère","🕯️","Ce soir, je t'embarque pour un rendez-vous surprise. Tu n'as qu'une mission : te laisser guider et profiter du moment avec moi."],
+["Cinq raisons","❤️","Cinq choses que j'aime chez toi : ta façon de me faire sourire, ton regard, nos fous rires, ta présence quand j'en ai besoin… et cette petite chose qui n'appartient qu'à toi. Je t'en dirai une autre en face."],
+["Action ou vérité","🎯","Ce soir, chacun pose trois questions à l'autre. Une règle : on joue le jeu avec sincérité. Et si une réponse nous surprend, on a le droit de demander un bisou."],
+["Une escapade","❄️","Prépare-toi pour une balade à deux, sans téléphone. On choisit une jolie rue, on prend une boisson chaude et on profite d'être ensemble."],
+["Mission bisous","💋","Tu viens de gagner un bon pour dix bisous. À toi de choisir quand les réclamer… mais attention, je pourrais en ajouter quelques-uns sans prévenir."],
+["Cinéma privé","🍿","Ce soir, séance de cinéma à la maison : plaid, pop-corn et film au choix de Monsieur. Je réserve ma place juste contre toi."],
+["Une invitation particulière","🔥","Ce soir, j'aimerais prendre le temps de te séduire. Une lumière tamisée, une tenue choisie pour toi, quelques baisers qui s'attardent… et la suite, on l'écrit à deux. Consentement et envie au programme, toujours."],
+["Défi photo","🤳","Défi du jour : faisons ensemble la photo la plus ridicule possible. Grimaces autorisées, dignité facultative. Cette œuvre d'art mérite une place dans nos souvenirs !"],
+["Chef à domicile","🍽️","Ce soir, je m'occupe du repas. Tu es officiellement dispensé de cuisine et nommé goûteur en chef. Ton avis sera très sérieusement étudié."],
+["Nos envies","✨","Raconte-moi un rêve ou un projet que tu aimerais vivre avec moi dans les prochaines années. Je te partagerai le mien. Et si on en faisait un vrai projet ?"],
+["Un petit cadeau","🎁","Une petite attention t'attend aujourd'hui. Elle n'a pas besoin d'être grande pour être choisie spécialement pour toi. Va chercher ton cadeau !"],
+["Danse avec moi","💃","Choisis une chanson qui nous ressemble. Ce soir, on danse tous les deux, même si on n'a aucun sens du rythme. Surtout si on n'a aucun sens du rythme."],
+["Le quiz amoureux","🥰","Petit quiz : quel a été notre premier vrai fou rire ? Quel détail chez moi te fait sourire ? Quel moment aimerais-tu revivre ? À ton tour de me poser trois questions."],
+["Bulle de douceur","🛁","Ce soir, on s'offre une parenthèse cocooning : musique douce, lumière tamisée, détente et câlins. Le programme est simple : ralentir et se retrouver."],
+["Une promesse","🤍","Aujourd'hui, faisons-nous chacun une petite promesse pour l'année à venir. Pas besoin qu'elle soit spectaculaire : juste quelque chose de vrai, qu'on aura envie de tenir."],
+["La surprise secrète","🗝️","Une surprise physique est cachée quelque part dans la maison. Premier indice : cherche là où l'on aime se retrouver quand on veut être bien au chaud. Bonne chasse, mon amour !"],
+["Juste toi et moi","🔥","Ce soir, je te veux tout près de moi. On coupe les écrans, on prend notre temps, on se regarde, on se touche, on s'embrasse… et on laisse la soirée décider de la suite, à notre rythme."],
+["Une lettre à cœur ouvert","✉️","J'aimerais te dire plus souvent combien tu comptes pour moi. Merci pour les moments simples, les fous rires, les gestes tendres et tout ce que nous construisons. Je suis heureuse de partager ce chemin avec toi."],
+["Le plus beau cadeau","🎄","Le calendrier arrive à sa dernière case, mais pas nos surprises. Le plus beau cadeau, ce n'est pas ce qu'il y a sous le sapin : c'est ce que nous construisons ensemble, jour après jour. Je t'aime. Joyeux Noël, Julien. ❤️"]
+];
+
+const password = "julien";
+const login = document.getElementById("login");
+const calendar = document.getElementById("calendar");
+const pass = document.getElementById("pass");
+const error = document.getElementById("error");
+const grid = document.getElementById("grid");
+const overlay = document.getElementById("overlay");
+const openedKey = "sandra-julien-advent-opened-2026";
+
+function getOpened(){try{return JSON.parse(localStorage.getItem(openedKey)||"[]")}catch(e){return []}}
+function saveOpened(a){localStorage.setItem(openedKey,JSON.stringify(a))}
+function todayIndex(){
+  const now = new Date();
+  const start = new Date(2026,11,1,0,0,0);
+  const end = new Date(2026,11,24,23,59,59);
+  if(now < start) return 0;
+  if(now > end) return 24;
+  return now.getDate();
+}
+function render(){
+  const opened = getOpened();
+  const count = opened.length;
+  document.getElementById("progressText").textContent = `${count} surprise${count>1?"s":""} découverte${count>1?"s":""} sur 24`;
+  document.getElementById("barFill").style.width = `${count/24*100}%`;
+  const day = todayIndex();
+  document.getElementById("todayText").textContent = day===0 ? "Rendez-vous le 1er décembre pour la première surprise ✨" : day>=24 ? "Toutes les portes sont maintenant accessibles. Joyeux Noël ! 🎄" : `La porte du jour : ${day} décembre · Encore ${24-day} jour${24-day>1?"s":""} avant Noël`;
+  grid.innerHTML="";
+  surprises.forEach((s,i)=>{
+    const n=i+1, unlocked=n<=day, wasOpened=opened.includes(n);
+    const b=document.createElement("button");
+    b.className="door"+(wasOpened?" opened":"");
+    b.disabled=!unlocked;
+    b.innerHTML=`<span class="num">${wasOpened?"♥":String(n).padStart(2,"0")}</span><span class="sub">${wasOpened?"Découverte":unlocked?"Ouvrir":"Bientôt"}</span>`;
+    b.setAttribute("aria-label",`Case ${n} ${unlocked?"ouvrable":"verrouillée"}`);
+    if(unlocked)b.addEventListener("click",()=>openSurprise(n));
+    grid.appendChild(b);
+  });
+}
+function openSurprise(n){
+  const s=surprises[n-1];
+  document.getElementById("modalDay").textContent=`La surprise du ${n} décembre`;
+  document.getElementById("modalEmoji").textContent=s[1];
+  document.getElementById("modalTitle").textContent=s[0];
+  document.getElementById("modalBody").textContent=s[2];
+  overlay.classList.remove("hidden");
+  const opened=getOpened();
+  if(!opened.includes(n)){opened.push(n);saveOpened(opened);render();}
+}
+function enter(){
+  if(pass.value.trim().toLowerCase()===password){
+    login.classList.add("hidden");calendar.classList.remove("hidden");error.textContent="";render();
+  }else{error.textContent="Ce n'est pas le bon code… Essaie encore, Julien !";pass.select();}
+}
+document.getElementById("enter").addEventListener("click",enter);
+pass.addEventListener("keydown",e=>{if(e.key==="Enter")enter()});
+document.getElementById("close").addEventListener("click",()=>overlay.classList.add("hidden"));
+overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.add("hidden")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")overlay.classList.add("hidden")});
+</script>
+</body>
+</html>
